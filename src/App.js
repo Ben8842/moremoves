@@ -14,24 +14,35 @@ class Board extends React.Component {
 
   render() {
     const status = "Hello World";
+    const elements = [];
+    const elementz = [];
+    var x;
+    for (x = 0; x < 15; x++) {
+      elements.push(<span>{this.renderSquare(x)}</span>);
+    }
+
+    const row = (
+      <span>
+        {elements.map((value, index) => {
+          return <span key={index}>{value}</span>;
+        })}
+      </span>
+    );
+
+    var y;
+    for (y = 0; y < 15; y++) {
+      elementz.push(<div>{row}</div>);
+    }
 
     return (
       <div class="button gridbutton">
         <div className="status">{status}</div>
-        <div class="button gridbutton" className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
         <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          <span>
+            {elementz.map((value, index) => {
+              return <span key={index}>{value}</span>;
+            })}
+          </span>
         </div>
       </div>
     );
