@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 class Square extends React.Component {
   render() {
-    return <button class="button gridbutton">{this.props.value}</button>;
+    return <button className="square">{this.props.value}</button>;
   }
 }
 
@@ -35,7 +35,7 @@ class Board extends React.Component {
     }
 
     return (
-      <div class="button gridbutton">
+      <div class="container">
         <div className="status">{status}</div>
         <div className="board-row">
           <span>
@@ -126,27 +126,32 @@ class App extends Component {
     );
 
     return (
-      <div id="griddisplay">
-        <div id="griddisplay">
-          {gridDisplay}
-          <div>
-            <button onClick={() => this.upwards()} class="button gridbutton">
-              Move UP
+      <div>
+        <div className="squareZ">
+          <div id="griddisplay">
+            {gridDisplay}
+            <div>
+              <button onClick={() => this.upwards()} class="button gridbutton">
+                Move UP
+              </button>
+            </div>
+            <button onClick={() => this.leftwards()} class="button gridbutton">
+              Move LEFT
             </button>
-          </div>
-          <button onClick={() => this.leftwards()} class="button gridbutton">
-            Move LEFT
-          </button>
-          <button onClick={() => this.rightwards()} class="button gridbutton">
-            Move RIGHT
-          </button>
-          <div>
-            <button onClick={() => this.downwards()} class="button gridbutton">
-              Move DOWN
+            <button onClick={() => this.rightwards()} class="button gridbutton">
+              Move RIGHT
             </button>
+            <div>
+              <button
+                onClick={() => this.downwards()}
+                class="button gridbutton"
+              >
+                Move DOWN
+              </button>
+            </div>
           </div>
+          <Board />
         </div>
-        <Board />
       </div>
     );
   }
