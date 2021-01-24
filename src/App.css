@@ -1,3 +1,55 @@
+.grid {
+  text-align: center;
+  padding: 40px;
+  background-color: lightblue;
+  color: darkgreen;
+}
+
+#griddisplay {
+  text-align: center;
+  color: darkgreen;
+  border-style: dashed;
+  border-color: blue;
+  border-width: thick;
+  padding: 25px;
+  margin: 25px;
+  font-size: 40px;
+  background-color: yellow;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.9s;
+  cursor: pointer;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.gridbutton {
+  background-color: lightblue;
+  color: black;
+  border: 8px solid #008cba;
+  font: 35px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.gridbutton:hover {
+  background-color: #008cba;
+  color: white;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
 .App {
   text-align: center;
 }
