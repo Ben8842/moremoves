@@ -11,12 +11,55 @@
   text-align: center;
 }
 
-.square {
+#square {
   background-color: white;
   color: black;
+
+  background: #fff;
+  border: solid solid solid solid;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 45px;
+
+  padding: 0;
   text-align: center;
-  border-style: none none none none;
+  width: 45px;
 }
+
+.sp {
+  background-color: orange !important;
+  color: red !important;
+
+  background: #fff;
+  border: solid solid solid solid;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 45px;
+
+  padding: 0;
+  text-align: center;
+  width: 45px;
+}
+
+.board-row {
+  clear: both;
+  content: "";
+  display: table;
+  text-align: center;
+}
+
+.special {
+  clear: both;
+  content: "";
+  display: table;
+  text-align: center;
+  background-color: yellow;
+}
+
 #griddisplay {
   text-align: center;
   color: darkgreen;

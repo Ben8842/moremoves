@@ -3,24 +3,63 @@ import React, { Component } from "react";
 
 class Square extends React.Component {
   render() {
-    return <button className="square">{this.props.value}</button>;
+    return (
+      <button className={this.props.className} id={this.props.id}>
+        {this.props.value}
+      </button>
+    );
+  }
+}
+
+class SquareS extends React.Component {
+  render() {
+    return (
+      <button className={this.props.className} id={this.props.id}>
+        {this.props.value}
+      </button>
+    );
   }
 }
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={i} />;
+    return <Square value={i} id="square" />;
+  }
+  renderSquareSpecial(i) {
+    return <SquareS value={i} className="sp" id="square" />;
   }
 
   render() {
-    const status = "Hello World";
+    const status = "";
     const elements = [];
     const elementz = [];
-    var x;
-    for (x = 0; x < 15; x++) {
-      elements.push(<span>{this.renderSquare(x)}</span>);
-    }
 
+    var x;
+    var y;
+    for (y = 0; y < 15; y++) {
+      for (x = 0; x < 15; x++) {
+        if (x === this.props.xvalue && y === this.props.yvalue) {
+          elements.push(<span>{this.renderSquareSpecial(x)}</span>);
+        } else {
+          elements.push(<span>{this.renderSquare(x)}</span>);
+        }
+      }
+
+      elementz.push(
+        <div className="border-row">
+          <span>
+            {elements.map((value, index) => {
+              return <span key={index}>{value}</span>;
+            })}
+          </span>
+        </div>
+      );
+      for (x = 0; x < 15; x++) {
+        elements.pop();
+      }
+      console.log(elements);
+    }
+    /*
     const row = (
       <span>
         {elements.map((value, index) => {
@@ -29,10 +68,35 @@ class Board extends React.Component {
       </span>
     );
 
+    const rowSpecial = (
+      <span>
+        {elements.map((value, index) => {
+          console.log(index + "index" + this.props.xvalue);
+          if (index === this.props.xvalue) {
+            return (
+              <span
+                class="squarespecial"
+                style={{ color: "red !important" }}
+                key={index}
+              >
+                {value}
+              </span>
+            );
+          } else {
+            return <span key={index}>{value}</span>;
+          }
+        })}
+      </span>
+    );
+
     var y;
     for (y = 0; y < 15; y++) {
-      elementz.push(<div>{row}</div>);
-    }
+      if (y === this.props.yvalue) {
+        elementz.push(<div className="border-row">{rowSpecial}</div>);
+      } else {
+        elementz.push(<div className="border-row">{row}</div>);
+      }
+    }*/
 
     return (
       <div class="container">
@@ -77,35 +141,39 @@ class App extends Component {
   }
 
   incrementX() {
+    this.setState({ state: this.state });
     this.setState((state) => {
       return { xcoordinate: state.xcoordinate + 1 };
     });
   }
 
   incrementY() {
+    this.setState({ state: this.state });
     this.setState((state) => {
       return { ycoordinate: state.ycoordinate + 1 };
     });
   }
 
   decrementX() {
+    this.setState({ state: this.state });
     this.setState((state) => {
       return { xcoordinate: state.xcoordinate - 1 };
     });
   }
 
   decrementY() {
+    this.setState({ state: this.state });
     this.setState((state) => {
       return { ycoordinate: state.ycoordinate - 1 };
     });
   }
 
   upwards() {
-    this.incrementY();
+    this.decrementY();
   }
 
   downwards() {
-    this.decrementY();
+    this.incrementY();
   }
 
   leftwards() {
@@ -150,7 +218,7 @@ class App extends Component {
               </button>
             </div>
           </div>
-          <Board />
+          <Board xvalue={xcoordinate} yvalue={ycoordinate} />
         </div>
       </div>
     );
