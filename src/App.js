@@ -1,79 +1,52 @@
 import "./App.css";
 import React, { Component } from "react";
 
-function hellofunction() {
-  console.log("hello");
-}
-
-function goodbyefunction() {
-  console.log("good bye");
-}
-
-function Morebuttons(props) {
-  const elements = [];
-  var y = props.name * 2;
-  var x;
-  for (x = 0; x < y; x++) {
-    elements.push(
-      <span>
-        <button>boom {props.name}</button>
-      </span>
-    );
+class Square extends React.Component {
+  render() {
+    return <button class="button gridbutton">{this.props.value}</button>;
   }
-  const booming = (
-    <span>
-      {elements.map((value, index) => {
-        return <span key={index}>{value}</span>;
-      })}
-    </span>
-  );
-
-  return booming;
 }
 
-function Createbuttons(props) {
-  const elements = [];
-  var y = props.name;
-  console.log(y);
-  var x;
-  for (x = 0; x < props.name; x++) {
-    elements.push(
-      <span>
-        <button onClick={() => hellofunction()}>HELLO </button>
-
-        <button onClick={() => goodbyefunction()}>GoodBye </button>
-      </span>
-    );
+class Board extends React.Component {
+  renderSquare(i) {
+    return <Square value={i} />;
   }
 
-  console.log({ elements });
-  const boating = (
-    <span>
-      {elements.map((value, index) => {
-        return <span key={index}>{value}</span>;
-      })}
-    </span>
-  );
+  render() {
+    const status = "Hello World";
 
-  return boating;
+    return (
+      <div class="button gridbutton">
+        <div className="status">{status}</div>
+        <div class="button gridbutton" className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+  }
 }
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flag: false,
       count: 1,
-      arry: [5, 6, 7],
+
       xcoordinate: 0,
       ycoordinate: 0,
     };
-  }
-
-  flip() {
-    this.setState({ flag: false });
-  }
-  flipO() {
-    this.setState({ flag: true });
   }
 
   reset() {
@@ -133,25 +106,7 @@ class App extends Component {
   }
 
   render() {
-    var { flag, count, arry, xcoordinate, ycoordinate } = this.state;
-
-    const training = (
-      <div>
-        {flag} {count} {arry}
-      </div>
-    );
-
-    const flaggingTrue = (
-      <div>
-        <button onClick={() => this.flip()}>Flag Flip is true</button>
-      </div>
-    );
-
-    const flaggingFalse = (
-      <div>
-        <button onClick={() => this.flipO()}>Flag Flip is false</button>
-      </div>
-    );
+    var { xcoordinate, ycoordinate } = this.state;
 
     const gridDisplay = (
       <div>
@@ -161,23 +116,26 @@ class App extends Component {
 
     return (
       <div id="griddisplay">
-        {gridDisplay}
-        <div>
-          <button onClick={() => this.upwards()} class="button gridbutton">
-            Move UP
+        <div id="griddisplay">
+          {gridDisplay}
+          <div>
+            <button onClick={() => this.upwards()} class="button gridbutton">
+              Move UP
+            </button>
+          </div>
+          <button onClick={() => this.leftwards()} class="button gridbutton">
+            Move LEFT
           </button>
-        </div>
-        <button onClick={() => this.leftwards()} class="button gridbutton">
-          Move LEFT
-        </button>
-        <button onClick={() => this.rightwards()} class="button gridbutton">
-          Move RIGHT
-        </button>
-        <div>
-          <button onClick={() => this.downwards()} class="button gridbutton">
-            Move DOWN
+          <button onClick={() => this.rightwards()} class="button gridbutton">
+            Move RIGHT
           </button>
+          <div>
+            <button onClick={() => this.downwards()} class="button gridbutton">
+              Move DOWN
+            </button>
+          </div>
         </div>
+        <Board />
       </div>
     );
   }
