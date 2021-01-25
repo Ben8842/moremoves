@@ -35,11 +35,11 @@ class Board extends React.Component {
     const status = "";
     const elements = [];
     const elementz = [];
-
+    const gridSize = 30;
     var x;
     var y;
-    for (y = 0; y < 15; y++) {
-      for (x = 0; x < 15; x++) {
+    for (y = 0; y < gridSize; y++) {
+      for (x = 0; x < gridSize; x++) {
         if (x === this.props.xvalue && y === this.props.yvalue) {
           elements.push(<span>{this.renderSquareSpecial(x)}</span>);
         } else {
@@ -56,7 +56,7 @@ class Board extends React.Component {
           </span>
         </div>
       );
-      for (x = 0; x < 15; x++) {
+      for (x = 0; x < gridSize; x++) {
         elements.pop();
       }
     }
