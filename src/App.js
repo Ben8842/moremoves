@@ -175,21 +175,21 @@ class App extends Component {
             {gridDisplay}
             <div>
               <button onClick={() => this.upwards()} class="button gridbutton">
-                Move UP
+                UP
               </button>
             </div>
             <button onClick={() => this.leftwards()} class="button gridbutton">
-              Move LEFT
+              LEFT
             </button>
             <button onClick={() => this.rightwards()} class="button gridbutton">
-              Move RIGHT
+              RIGHT
             </button>
             <div>
               <button
                 onClick={() => this.downwards()}
                 class="button gridbutton"
               >
-                Move DOWN
+                DOWN
               </button>
             </div>
           </div>
