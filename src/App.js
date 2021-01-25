@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { Component } from "react";
 
+import { BadgerButton, BadgerBadge } from "badger-components-react";
+
 class Square extends React.Component {
   render() {
     return (
@@ -26,7 +28,7 @@ class Board extends React.Component {
     return <Square value={i} id="square" />;
   }
   renderSquareSpecial(i) {
-    return <SquareS value={i} className="sp" id="square" />;
+    return <SquareS value="X" className="sp" id="square" />;
   }
 
   render() {
@@ -57,46 +59,7 @@ class Board extends React.Component {
       for (x = 0; x < 15; x++) {
         elements.pop();
       }
-      console.log(elements);
     }
-    /*
-    const row = (
-      <span>
-        {elements.map((value, index) => {
-          return <span key={index}>{value}</span>;
-        })}
-      </span>
-    );
-
-    const rowSpecial = (
-      <span>
-        {elements.map((value, index) => {
-          console.log(index + "index" + this.props.xvalue);
-          if (index === this.props.xvalue) {
-            return (
-              <span
-                class="squarespecial"
-                style={{ color: "red !important" }}
-                key={index}
-              >
-                {value}
-              </span>
-            );
-          } else {
-            return <span key={index}>{value}</span>;
-          }
-        })}
-      </span>
-    );
-
-    var y;
-    for (y = 0; y < 15; y++) {
-      if (y === this.props.yvalue) {
-        elementz.push(<div className="border-row">{rowSpecial}</div>);
-      } else {
-        elementz.push(<div className="border-row">{row}</div>);
-      }
-    }*/
 
     return (
       <div class="container">
@@ -195,6 +158,18 @@ class App extends Component {
 
     return (
       <div>
+        <BadgerButton
+          price={0.003}
+          currency="USD"
+          to="bitcoincash:pp8skudq3x5hzw8ew7vzsw8tn4k8wxsqsv0lt0mf3g"
+          opReturn={["0x6d02", "Hello badger-components-react"]}
+          text="Badger Pay"
+          showAmount
+          showBorder
+          showQR
+          successFn={() => console.log("success example function called")}
+          failFn={() => console.log("fail example function called")}
+        />
         <div className="squareZ">
           <div id="griddisplay">
             {gridDisplay}
@@ -226,13 +201,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
- <div>
-          <button onClick={() => this.learning()}>
-            click here to count {count}
-          </button>
-        </div>
-        <button onClick={() => this.reset()}>RESET</button>
-        {flag ? flaggingTrue : flaggingFalse}
-        */
